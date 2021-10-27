@@ -1,0 +1,37 @@
+{
+  "name": "node-challenge-001",
+  "version": "1.0.0",
+  "description": "Node challenge 001",
+  "repository": "https://github.com/JungleDevs/node-challenge-001",
+  "author": "Vinicius de Morais Justo",
+  "license": "MIT",
+  "private": false,
+  "engineStrict": true,
+  "engines": {
+    "node": "12"
+  },
+  "scripts": {
+    "make-seed": "npx knex seed:make dev --knexfile ./src/db/knexfile.js",
+    "migrate": "npx knex migrate:latest --knexfile ./src/db/knexfile.js",
+    "seed": "npx knex seed:run --knexfile ./src/db/knexfile.js",
+    "down": "npx knex migrate:down --knexfile ./src/db/knexfile.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --exec babel-node --plugins transform-object-rest-spread src/app.js",
+    "build": "babel --ignore ./src/db/seeds/ --plugins transform-object-rest-spread src --out-dir build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.15.8",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.95.11",
+    "objection": "^2.2.3",
+    "pg": "^8.5.1"
+  }
+}
