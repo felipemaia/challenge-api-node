@@ -1,81 +1,28 @@
-# Jungle Devs - Node Challenge #001
+# Node Challenge #001 presented by Jungle Devs
 
-## Description
+## Description on how to run the project
 
-**Challenge goal**: The purpose of this challenge is to give an overall understanding of a backend application. You’ll be implementing a simplified version of news provider API. The concepts that you’re going to apply are:
+**Development Enviroment**: For the purpose to be analysed, the following instructions are set to help run correctly the app:
 
-- REST architecture;
-- Authentication and permissions;
-- Data modeling and migrations;
-- SQL database;
-- Query optimization;
-- Serialization;
-- Production builds.
+-- Must have node.js installed (+v10)
+1. Download all the files (assuming this doc is been read, it was already done)
+2. Install all the dependencies, using the command 'npm install' (in linux enviroments, suppose it's 'yarn install')
+3. Some bugs might occur, based on depreciated functions. Use the command 'npm audit fix'
+4. Run the command 'docker-compose up' so the container is installed correctly
+5. Open docker and make sure it is running the container. If not, start the container
+    (the container will probably be with the folder name all the files were saved in)
+6. With the help of some visual DB administrator, such as PGAdmin or DBeaver, check if the DB is running and can be reached
+    Use:  localhost for HOST; postgres for USERNAME; postgres for PASSWORD; 5432 for PORT
+7. Run the command 'npm run migrate' so all the tables are instanciated
+8. This step is optional: run the command 'npm run seed', witch will populate the DB
+9. Run the command 'npm run dev' so the server is up and read to be tested
+10. Use the 'API Collection' so it can be fully tested REST architecture;
 
-**Target level**: This is an all-around challenge that covers both juniors and experienced devs based on the depth of how the concepts were applied.
+**Build Enviroment**: The following instructions are to build and deploy the app.
 
-**Final accomplishment**: By the end of this challenge you’ll have a production ready API.
+1. Change DB configurations in './sec/db/knexfils.js'
+2. (I guess) Instanciate the DB tables with the command 'npm run migrate' (on the desired location, not localhost anymore)
+3. Run the command 'npm run build' witch will generate a server file, in the directory './build'
+4. Upload the files generated and run it on the server!
 
-## Acceptance criteria
-
-- Clear instructions on how to run the application in development mode
-- Clear instructions on how to create production builds
-- A good API documentation or collection
-- Models created using [Objection.js](https://vincit.github.io/objection.js/)
-- Login API: `/api/login`
-- Sign-up API: `/api/sign-up`
-- Administrator restricted APIs:
-  - CRUD `/api/admin/authors`
-  - CRUD `/api/admin/articles`
-- List article endpoint `/api/articles?category=:slug` with the following response:
-```json
-[
-  {
-    "author": {
-      "name": "Author Name",
-      "picture": "https://picture.url"
-    },
-    "category": "Category",
-    "title": "Article title",
-    "summary": "This is a summary of the article"
-  },
-  ...
-]
-```
-- Article detail endpoint `/api/articles/:id` with different responses for anonymous and logged users:
-
-    **Anonymous**
-    ```json
-    {
-      "author": {
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>"
-    }
-    ```
-
-    **Logged user**
-    ```json
-    {
-      "author": {
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>",
-      "body": "<div><p>Second paragraph</p><p>Third paragraph</p></div>"
-    }
-    ```
-
-
-## Instructions to Run
-
-- Database: `docker-compose up` will start the PostgreSQL DB
-- `yarn dev` is configured to start the app.js using nodemon
-
+There is a .doc file, defining every and each of the endpoints, witch parameters to use, method and so on!
