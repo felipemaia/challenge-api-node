@@ -5,6 +5,8 @@
 **Development Enviroment**: For the purpose to be analysed, the following instructions are set to help run correctly the app:
 
 -- Must have node.js installed (+v10)
+-- Must have docker installed (as well as docker-composer)
+
 1. Download all the files (assuming this doc is been read, it was already done)
 2. Install all the dependencies, using the command 'npm install' (in linux enviroments, suppose it's 'yarn install')
 3. Some bugs might occur, based on depreciated functions. Use the command 'npm audit fix'
